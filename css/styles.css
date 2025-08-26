@@ -1,0 +1,69 @@
+:root {
+  --bg: #0a0d14; --panel: #141821; --surface: #0e1528; --accent: #61dafb;
+  --human: #ec4899; --ai: #10b981; --hybrid: #8b5cf6; --kernel: #f59e0b;
+  --convergence: #ef4444; --ink: #e7eaf0; --muted: #94a3b8; --line: #29324a;
+  --good:#41d677; --warn:#ffb020; --bad:#ff6b6b;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 20% -10%, #0b1220 0%, #0b1020 60%, #0a0d1a 100%);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+  color: var(--ink);
+  overflow: hidden; height: 100vh;
+}
+.studio {
+  position: relative; width: 100vw; height: 100vh; display: grid;
+  grid-template-rows: auto 1fr auto; grid-template-columns: 320px 1fr;
+  grid-template-areas: "sidebar toolbar" "sidebar canvas" "sidebar status";
+}
+.sidebar {
+  grid-area: sidebar; background: rgba(20,24,33,0.95); backdrop-filter: blur(16px);
+  border-right: 1px solid var(--line); padding: 20px; overflow-y: auto;
+}
+.toolbar {
+  grid-area: toolbar; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  padding: 16px 20px; background: rgba(20,24,33,0.95); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+.canvas-container { grid-area: canvas; position: relative; overflow: hidden; }
+canvas, #hud { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#hud { pointer-events: none; z-index: 1; }
+.status {
+  grid-area: status; display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 20px; background: rgba(20,24,33,0.95); backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line); font-size: 12px; color: var(--muted);
+}
+h1 { margin: 0; color: var(--accent); font-size: 18px; font-weight: 600; }
+h3 { margin: 16px 0 8px 0; color: var(--accent); font-size: 14px; }
+.btn {
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 8px;
+  padding: 8px 12px; cursor: pointer; font-size: 12px; transition: all 0.2s; font-family: inherit;
+  min-height: 36px; width: 100%; margin-bottom: 8px;
+}
+.btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.btn.active { background: rgba(97, 218, 251, 0.15); border-color: var(--accent); color: var(--accent); }
+.btn.human  { border-color: var(--human);  color: var(--human); }
+.btn.ai     { border-color: var(--ai);     color: var(--ai); }
+.btn.hybrid { border-color: var(--hybrid); color: var(--hybrid); }
+.btn.kernel { border-color: var(--kernel); color: var(--kernel); }
+.tool-group { margin-bottom: 16px; }
+.tool-group label { color: var(--muted); font-size: 12px; margin-bottom: 6px; display: block; }
+input[type="range"] { width: 100%; accent-color: var(--accent); height: 4px; margin-bottom: 8px; }
+input[type="range"].warn { outline: 2px solid var(--warn); outline-offset: 2px; }
+input[type="range"].danger { outline: 2px solid var(--bad); outline-offset: 2px; }
+.value-display { color: var(--accent); font-size: 11px; text-align: right; font-weight: 600; }
+.dimension-controls { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin-bottom: 16px; }
+.dimension-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.dimension-row:last-child { margin-bottom: 0; }
+.slice-indicator { background: rgba(97, 218, 251, 0.1); border: 1px solid var(--accent); border-radius: 6px; padding: 8px; margin-top: 12px; font-size: 11px; }
+.status-left { display: flex; gap: 16px; align-items: center; }
+.badge { background: var(--accent); color: black; padding: 4px 8px; border-radius: 6px; font-weight: 600; font-size: 11px; }
+.metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+.metric-card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 8px; font-size: 11px; }
+.metric-value { color: var(--accent); font-weight: 600; font-size: 14px; }
+.compact { font-size: 11px; color: var(--muted); }
+.proj-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.proj-controls label { color: var(--muted); font-size: 11px; margin: 0; }
+.proj-controls input[type="range"] { width: 60px; margin: 0; }
+select { background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; }

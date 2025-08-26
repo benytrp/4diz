@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4D Consciousness Paint Studio — Minimal Core</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="studio">
+    <div class="sidebar">
+      <h1>🌌 4D Consciousness Studio</h1>
+
+      <div class="tool-group">
+        <h3>🎨 Hyperdimensional Paint Tools</h3>
+        <button class="btn active" id="tool4DBrush">🖌️ 4D Consciousness Brush</button>
+        <button class="btn" id="tool4DNode">⬢ 4D Consciousness Node</button>
+        <button class="btn" id="tool4DFlow">🌊 4D Flow Stream</button>
+        <button class="btn" id="tool4DKernel">🧠 4D Kernel Bridge</button>
+        <button class="btn" id="tool4DEraser">🗑️ 4D Eraser</button>
+      </div>
+
+      <div class="tool-group">
+        <h3>🧠 Node Categories</h3>
+        <button class="btn human" id="typeHuman">👤 Category A</button>
+        <button class="btn ai active" id="typeAI">🤖 Category B</button>
+        <button class="btn hybrid" id="typeHybrid">🌀 Category C</button>
+        <button class="btn kernel" id="typeKernel">🔥 Core Nodes</button>
+      </div>
+
+      <div class="dimension-controls">
+        <h3>📐 4D Space Controls</h3>
+        <div class="dimension-row"><label>X (Spatial)</label><span class="value-display" id="x-value">0.0</span></div>
+        <input type="range" id="xAxis" min="-10" max="10" step="0.1" value="0" />
+        <div class="dimension-row"><label>Y (Spatial)</label><span class="value-display" id="y-value">0.0</span></div>
+        <input type="range" id="yAxis" min="-10" max="10" step="0.1" value="0" />
+        <div class="dimension-row"><label>Z (Spatial)</label><span class="value-display" id="z-value">0.0</span></div>
+        <input type="range" id="zAxis" min="-10" max="10" step="0.1" value="0" />
+        <div class="dimension-row"><label>W (Consciousness Depth)</label><span class="value-display" id="w-value">0.0</span></div>
+        <input type="range" id="wAxis" min="-5" max="5" step="0.1" value="0" />
+        <div class="slice-indicator">Viewing 3D slice at W = <span id="currentW">0.0</span><br><small>Paint in 4D, visualize in 3D cross-section</small></div>
+      </div>
+
+      <div class="tool-group">
+        <h3>⚙️ Brush Parameters</h3>
+        <label>Brush Size (4D)</label>
+        <input type="range" id="brush4DSize" min="0.5" max="8.0" step="0.1" value="2.0" />
+        <div class="value-display" id="brush4DSize-value">2.0</div>
+        <label>Consciousness Intensity</label>
+        <input type="range" id="consciousnessIntensity" min="0.1" max="2.0" step="0.05" value="1.0" />
+        <div class="value-display" id="consciousnessIntensity-value">1.0</div>
+        <label>Temporal Coherence</label>
+        <input type="range" id="temporalCoherence" min="0.0" max="1.0" step="0.05" value="0.7" />
+        <div class="value-display" id="temporalCoherence-value">0.7</div>
+        <label>Kernel Coupling</label>
+        <input type="range" id="kernelCoupling" min="0.0" max="3.0" step="0.1" value="1.0" />
+        <div class="value-display" id="kernelCoupling-value">1.0</div>
+      </div>
+
+      <div class="tool-group">
+        <h3>🔬 Node & Evidence Metrics</h3>
+        <div class="metrics-grid">
+          <div class="metric-card"><div>4D Nodes</div><div class="metric-value" id="node4DCount">0</div></div>
+          <div class="metric-card"><div>Hyperstrokes</div><div class="metric-value" id="stroke4DCount">0</div></div>
+          <div class="metric-card"><div>Convergence</div><div class="metric-value" id="convergenceMetric">0.00</div></div>
+          <div class="metric-card"><div>Kernel I(t)</div><div class="metric-value" id="kernelState">0.00</div></div>
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <h3>💾 4D Data Operations</h3>
+        <button class="btn" id="export4D">💾 Export Session</button>
+        <button class="btn" id="import4D">📁 Import</button>
+        <button class="btn" id="clear4D">🧹 Clear Hyperspace</button>
+        <button class="btn" id="sample4D">🎭 Load Sample 4D</button>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <h1>Hyperdimensional Consciousness Mapping</h1>
+      <div style="flex:1"></div>
+      <div class="proj-controls">
+        <label>Mode:</label>
+        <select id="projectionMode">
+          <option value="slice">3D Slice (W-fixed)</option>
+          <option value="perspective">4D→3D Perspective</option>
+          <option value="orthogonal">4D→3D Orthogonal</option>
+          <option value="stereographic">Stereographic</option>
+        </select>
+        <select id="projPresets"><option value="">-- Preset --</option></select>
+      </div>
+      <div class="proj-controls" id="projParams">
+        <label>d</label><input id="p_d" type="range" min="2" max="24" step="0.5" value="8">
+        <label>α</label><input id="p_a" type="range" min="-1" max="1" step="0.01" value="0.2">
+        <label>β</label><input id="p_b" type="range" min="-1" max="1" step="0.01" value="0.2">
+        <label>R</label><input id="p_R" type="range" min="2" max="24" step="0.5" value="12">
+        <label>c</label><input id="p_c" type="range" min="-12" max="24" step="0.5" value="8">
+      </div>
+    </div>
+
+    <div class="canvas-container">
+      <canvas id="canvas4d"></canvas>
+      <canvas id="hud"></canvas>
+    </div>
+
+    <div class="status">
+      <div class="status-left">
+        <span>Mode: <strong id="currentMode">4D Consciousness Brush</strong></span>
+        <span>Dimension: <strong id="activeDimension">W=0.0</strong></span>
+        <span>Nodes: <strong id="totalNodes">0</strong></span>
+        <span>FPS: <strong id="fps">60</strong></span>
+      </div>
+      <div><span class="badge" id="statusBadge">HYPERSPACE READY</span></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
